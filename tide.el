@@ -1953,6 +1953,8 @@ current buffer."
   (set (make-local-variable 'imenu-create-index-function)
        'tide-imenu-index)
 
+  (tide-mode 1)
+
   (if (tide-current-server)
       ;;
       ;; We want to issue tide-configure-buffer here if the server exists.  We
@@ -1965,9 +1967,7 @@ current buffer."
       ;;
       (tide-configure-buffer)
     (when (eq tide-tsserver-start-method 'immediate)
-      (tide-start-server)))
-
-  (tide-mode 1))
+      (tide-start-server))))
 
 ;;;###autoload
 (define-minor-mode tide-mode
